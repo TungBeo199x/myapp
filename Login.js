@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput} from 'react-native';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://172.16.2.54:8080';
+axios.defaults.baseURL = 'https://serverreactsimple.herokuapp.com/';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export default function login(props){

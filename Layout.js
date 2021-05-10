@@ -3,8 +3,9 @@ import { StyleSheet, Text, View, Button, FlatList} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import axios from 'axios';
+import ItemDetail from './ViewItemDetail';
 
-axios.defaults.baseURL = 'http://172.16.2.54:8080';
+axios.defaults.baseURL = 'https://serverreactsimple.herokuapp.com/';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export default function ViewLayout({route, navigation }){
@@ -36,7 +37,7 @@ export default function ViewLayout({route, navigation }){
       <View style={styles.container}>
         <FlatList
           data = {users}
-          renderItem = {({item}) => <Text style={styles.item}>{item.email} and {item.age}</Text>}
+          renderItem = {({item}) => <ItemDetail item = {item} />}
         />
         <Text defaultValue={value} >{value}</Text>
         <Button 

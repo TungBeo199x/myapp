@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View} from 'react-native';
+import { AsyncStorage } from 'react-native';
 import { NavigationContainer} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import InputText from './InputText';
@@ -11,6 +11,17 @@ import Login from './Login';
 const Stack = createStackNavigator();
 
 export default function App() {
+    const [routeName, setRouteName] = useState('Login');
+    _storeData = async () => {
+        try{
+            const user = await AsyncStorage.getItem('user');
+            if(user) {
+                setRouteName('Layout');
+            }
+        } catch (error){
+            setRouteName('Login');
+        }
+    }
   return (
       <NavigationContainer >
           <Stack.Navigator initialRouteName="Login">
